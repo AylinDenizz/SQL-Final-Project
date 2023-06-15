@@ -36,10 +36,34 @@ JOIN comments ON users.user_id = comments.user_id
 GROUP by users.username;
 
 --8. Her kategoriyi, kategorideki gönderi sayısıyla birlikte gösterin.
+SELECT categories.name, Count(posts.category_id) FROM categories
+JOIN posts ON posts.category_id = categories.category_id
+GROUP by categories.name;
+
 --9. Gönderi sayısına göre en popüler kategoriyi bulun.
+SELECT categories.name, Count(posts.category_id) FROM categories
+JOIN posts ON posts.category_id = categories.category_id
+GROUP by categories.name
+ORDER by Count(posts.category_id) DESC
+LIMIT 1;
+
 --10. Gönderilerindeki toplam görüntülenme sayısına göre en popüler kategoriyi bulun.
+SELECT SUM(posts.view_count), categories.name FROM posts
+JOIN categories ON posts.category_id = categories.category_id
+GROUP by categories.name
+ORDER by SUM(posts.view_count) DESC
+LIMIT 1;
+
 --11. En fazla yoruma sahip gönderiyi alın.
+SELECT post_id, COUNT(comment) FROM comments
+GROUP BY post_id
+LIMIT 1;
+
 --12. Belirli bir gönderinin yazarının kullanıcı adını ve e-posta adresini gösterin.
+SELECT users.username, users.email, posts.title FROM users
+JOIN posts ON users.user_id = posts.user_id
+WHERE posts.title = 'Red Dead Redemption 2' ;
+
 --13. Başlık veya içeriklerinde belirli bir anahtar kelime bulunan tüm gönderileri bulun.
 --14. Belirli bir kullanıcının en son yorumunu gösterin.
 --15. Gönderi başına ortalama yorum sayısını bulun.
