@@ -11,16 +11,30 @@ ORDER By creation_date DESC
 LIMIT 5;
 
 --3. Her blog yazısı için yorum sayısını gösterin.
-SELECT posts.post_id , count_table.count_post, posts.title FROM posts
+SELECT count_table.count_post, posts.title FROM posts
 JOIN (SELECT Count(post_id)AS count_post, post_id FROM comments
 GROUP BY post_id 
 ORDER By post_id DESc) AS count_table ON count_table.post_id = posts.post_id;
 
 --4. Tüm kayıtlı kullanıcıların kullanıcı adlarını ve e-posta adreslerini gösterin.
-
+SELECT username, email FROM users
+WHERE username IS NOT NULL ;
 --5. En son 10 yorumu, ilgili gönderi başlıklarıyla birlikte alın.
+SELECT comments.comment, posts.title, comments.creation_date FROM comments
+JOIN posts ON comments.post_id = posts.post_id
+ORDER by comments.creation_date DESC
+LIMIT 10;
+
 --6. Belirli bir kullanıcı tarafından yazılan tüm blog yazılarını bulun.
+SELECT users.username, comments.* From comments
+JOIN users ON users.user_id = comments.user_id
+WHERE users.user_id = 10;
+
 --7. Her kullanıcının yazdığı toplam gönderi sayısını alın.
+SELECT users.username, Count(comments.comment) FROM users
+JOIN comments ON users.user_id = comments.user_id
+GROUP by users.username;
+
 --8. Her kategoriyi, kategorideki gönderi sayısıyla birlikte gösterin.
 --9. Gönderi sayısına göre en popüler kategoriyi bulun.
 --10. Gönderilerindeki toplam görüntülenme sayısına göre en popüler kategoriyi bulun.
