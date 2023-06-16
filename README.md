@@ -1,63 +1,62 @@
-#SQL Ödevi
-##Hedef
-Basit bir veritabanı oluşturup verilerimizi ekledikten sonra öğrendiklerimizi tekrar edeceğimiz
-sorgular oluşturmak ve pratik yapmak.
-##Konu
-Basit bir blog veritabanı tasarlamanız gerekiyor. Bu veritabanında users, posts, categories
-ve comments tablolarımız yer alacak. Tabloların alan bilgileri şu şekilde olmalıdır.
+# SQL Assignment
+## Aim
+After creating a simple database and adding our data, we will repeat what we have learned.
+creating and practicing queries.
+## Subject
+You need to design a simple blog database. In this database users, posts, categories
+and our comments tables. The field information of the tables should be as follows.
 
-##Tabloların Veri Yapısı ve Kısıtlamalar
-1. Belirtilen tabloların hepsinde tablo ismine ait id bilgisi PRIMARY KEY olmalıdır.
-Tablolar arasında FOREIGN KEY ile referans verilerek ilişki kurulmalıdır.
-2. Tüm tablolarda creation_date bilgisi eğer INSERT sorgusunda belirtilmez ise
-otomatik olarak verinin eklendiği andaki tarih ve zaman bilgisini eklemelidir.
-3. Kullanıcıların username ve email bilgisinin UNIQUE olmasına, aynı zamanda NULL
-içerik girilememesine dikkat edilmelidir.
-4. Tüm gönderilerin (posts) title ve content bilgisi olmak zorundadır. title bilgisi 50
-karakterden uzun olmamalıdır.
-5. Bir gönderi herhangi bir view_count bilgisi olmadan kayıt edilirse 0 olarak başlangıç
-değerine sahip olmalıdır.
-6. Hiçbir gönderi (post) kullanıcı (user) bilgisi olmadan kayıt edilememelidir.
-7. Hiçbir gönderi (post) kategori (category) bilgisi olmadan kayıt edilememelidir.
-8. Her bir kategori ismi benzersiz (unique) olmalıdır ve NULL olarak kayıt eklenmesi
-kısıtlanmalıdır.
-9. Hiçbir yorum (comment) gönderi (post) bilgisi olmadan kayıt edilememelidir.
-10. Tüm yorumların (comment) comment bilgisi olmak zorundadır.
-11. Yorumlar (comment) kullanıcı (user) bilgisi içerebilir veya içermeyebilirler.
 
-##Tablodaki Veriler
-1. users tablosunda minimum 2 kullanıcı bulunmalıdır.
-2. posts tablosunda farklı kategorilerde, farklı görüntülenme sayılarında ve farklı
-başlıklarda minimum 50 gönderi bulunmalıdır.
-3. categories tablosunda minimum 3 kategori bulunmalıdır.
-4. comments tablosunda farklı gönderilere ait, farklı kullanıcılara ait veya kullanıcısı
-olmayan toplam minimum 250 yorum bulunmalıdır.
-5. Verilerin creation_date bilgileri birbirinden farklı olmalıdır.
-Veritabanında Gerçekleştirmek İstediğimiz İşlemler
-1. Tüm blog yazılarını başlıkları, yazarları ve kategorileriyle birlikte getirin.
-2. En son yayınlanan 5 blog yazısını başlıkları, yazarları ve yayın tarihleriyle birlikte
-alın.
-3. Her blog yazısı için yorum sayısını gösterin.
-4. Tüm kayıtlı kullanıcıların kullanıcı adlarını ve e-posta adreslerini gösterin.
-5. En son 10 yorumu, ilgili gönderi başlıklarıyla birlikte alın.
-6. Belirli bir kullanıcı tarafından yazılan tüm blog yazılarını bulun.
-7. Her kullanıcının yazdığı toplam gönderi sayısını alın.
-8. Her kategoriyi, kategorideki gönderi sayısıyla birlikte gösterin.
-9. Gönderi sayısına göre en popüler kategoriyi bulun.
-10. Gönderilerindeki toplam görüntülenme sayısına göre en popüler kategoriyi bulun.
-11. En fazla yoruma sahip gönderiyi alın.
-12. Belirli bir gönderinin yazarının kullanıcı adını ve e-posta adresini gösterin.
-13. Başlık veya içeriklerinde belirli bir anahtar kelime bulunan tüm gönderileri bulun.
-14. Belirli bir kullanıcının en son yorumunu gösterin.
-15. Gönderi başına ortalama yorum sayısını bulun.
-16. Son 30 günde yayınlanan gönderileri gösterin.
-17. Belirli bir kullanıcının yaptığı yorumları alın.
-18. Belirli bir kategoriye ait tüm gönderileri bulun.
-19. 5'ten az yazıya sahip kategorileri bulun.
-20. Hem bir yazı hem de bir yoruma sahip olan kullanıcıları gösterin.
-21. En az 2 farklı yazıya yorum yapmış kullanıcıları alın.
-22. En az 3 yazıya sahip kategorileri görüntüleyin.
-23. 5'ten fazla blog yazısı yazan yazarları bulun.
-24. Bir blog yazısı yazmış veya bir yorum yapmış kullanıcıların e-posta adreslerini
-görüntüleyin. (UNION kullanarak)
-25. Bir blog yazısı yazmış ancak hiç yorum yapmamış yazarları bulun
+## Data Structure of Tables and Constraints
+1. In all of the specified tables, the id information of the table name must be PRIMARY KEY.
+Relationships should be established between tables by referencing the FOREIGN KEY.
+2. In all tables, if creation_date is not specified in the INSERT query
+it should automatically add the date and time information at the time the data was added.
+3. Users' username and email information must be UNIQUE and NULL at the same time.
+Please note that content cannot be entered.
+4. All posts must have title and content information. title info 50
+should not be longer than one character.
+5. If a post is registered without any view_count information, it starts as 0
+should have value.
+6. No post (post) should be registered without user information.
+7. No post should be registered without category information.
+8. Each category name must be unique and add a NULL record
+should be restricted.
+9. No comment should be registered without post information.
+10. All comments must have comment information.
+11. Comments may or may not contain user information.
+
+## Data in Table
+1. There must be a minimum of 2 users in the users table.
+2. In the posts table, in different categories, different views and different
+Titles must contain a minimum of 50 posts.
+3. There must be a minimum of 3 categories in the categories table.
+4. Belong to different posts, belong to different users or user in the comments table
+There must be a total of at least 250 comments that are not
+5. The creation_date information of the data must be different from each other.
+## Transactions We Want We Performed on the Database
+1. Bring all blog posts with their titles, authors and categories.
+2. Get the 5 most recently published blog posts with their titles, authors and publication dates.
+3. Show the number of comments for each blog post.
+4. Show usernames and email addresses of all registered users.
+5. Get the latest 10 comments with their respective post titles.
+6. Find all blog posts written by a specific user.
+7. Get the total number of posts each user wrote.
+8. Show each category with the number of posts in the category.
+9. Find the most popular category by number of posts.
+10. Find the most popular category based on the total number of views on their posts.
+11. Get the post with the most comments.
+12. Show the username and email address of the author of a particular post.
+13. Find all posts with a specific keyword in their title or content.
+14. Show the most recent comment from a specific user.
+15. Find the average number of comments per post.
+16. Show posts published in the last 30 days.
+17. Get comments made by a specific user.
+18. Find all posts belonging to a specific category.
+19. Find categories with less than 5 posts.
+20. Show users who have both a post and a comment.
+21. Get users who have commented on at least 2 different posts.
+22. View categories with at least 3 posts.
+23. Find authors who have written more than 5 blog posts.
+24. View the email addresses of users who have written a blog post or left a comment. (using UNION)
+25. Find authors who have written a blog post but never commented
