@@ -3,9 +3,8 @@
 After creating a simple database and adding our data, we will repeat what we have learned.
 creating and practicing queries.
 ## Subject
-You need to design a simple blog database. In this database users, posts, categories
-and our comments tables. The field information of the tables should be as follows.
-
+This project created for designing a simple blog database. In this database users, posts, categories
+and our comments tables. The field information of the tables are follows.
 
 ## Data Structure of Tables and Constraints
 1. In all of the specified tables, the id information of the table name must be PRIMARY KEY.
@@ -26,7 +25,7 @@ should be restricted.
 10. All comments must have comment information.
 11. Comments may or may not contain user information.
 
-## Data in Table
+## Data Constraints
 1. There must be a minimum of 2 users in the users table.
 2. In the posts table, in different categories, different views and different
 Titles must contain a minimum of 50 posts.
@@ -34,7 +33,8 @@ Titles must contain a minimum of 50 posts.
 4. Belong to different posts, belong to different users or user in the comments table
 There must be a total of at least 250 comments that are not
 5. The creation_date information of the data must be different from each other.
-## Transactions We Want We Performed on the Database
+
+## SELECT Queries That Created for This Database
 1. Bring all blog posts with their titles, authors and categories.
 2. Get the 5 most recently published blog posts with their titles, authors and publication dates.
 3. Show the number of comments for each blog post.
