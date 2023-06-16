@@ -127,10 +127,24 @@ GROUP BY user_id
 HAVING COUNT(*) > 5;
 
 --24. Bir blog yazısı yazmış veya bir yorum yapmış kullanıcıların e-posta adreslerini görüntüleyin. (UNION kullanarak)
-
+SELECT users.email FROM users 
+WHERE EXISTS ( SELECT 1 FROM posts 
+    WHERE posts.user_id = users.user_id
+) UNION 
+(SELECT users.email FROM users 
+		 WHERE EXISTS ( SELECT 1 FROM comments 
+    WHERE comments.user_id = users.user_id
+));
 
 --25. Bir blog yazısı yazmış ancak hiç yorum yapmamış yazarları bulun.
-
+SELECT users.email FROM users 
+WHERE EXISTS ( SELECT 1 FROM posts 
+    WHERE posts.user_id = users.user_id
+) EXCEPT 
+(SELECT users.email FROM users 
+		 WHERE EXISTS ( SELECT 0 FROM comments 
+    WHERE comments.user_id = users.user_id
+));
 
 
 
